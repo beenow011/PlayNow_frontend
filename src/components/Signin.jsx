@@ -31,7 +31,7 @@ export default function SignIn() {
       setError("All fields are required");
     } else {
       try {
-        const res = await axios.post("/api/v1/users/login", {
+        const res = await axios.post("https://playnow011.azurewebsites.net/", {
           email: data.get("email"),
           password: data.get("password"),
         });
