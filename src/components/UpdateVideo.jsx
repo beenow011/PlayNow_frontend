@@ -45,7 +45,9 @@ function UpdateVideo() {
   useEffect(() => {
     const getVideo = async () => {
       try {
-        const res = await axios.get(`/api/v1/videos/fetchVideo/${videoID}`);
+        const res = await axios.get(
+          `https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/fetchVideo/${videoID}`
+        );
         if (res?.data.success) {
           setVid(res?.data?.data[0]);
           setTogglePublic(res?.data?.data[0]?.isPublished);
@@ -75,7 +77,7 @@ function UpdateVideo() {
       try {
         setIsLoading2(true);
         const res = await axios.patch(
-          `/api/v1/videos/updateVideo/${vid?._id}`,
+          `https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/updateVideo/${vid?._id}`,
           {
             title: title ? title : vid?.title,
             description: desc,
@@ -101,7 +103,9 @@ function UpdateVideo() {
 
   const handleTogglePublic = async () => {
     try {
-      const res = await axios.patch(`/api/v1/videos/togglePublish/${vid?._id}`);
+      const res = await axios.patch(
+        `https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/togglePublish/${vid?._id}`
+      );
       if (res?.data?.success) {
         setTogglePublic((prev) => !prev);
       }
@@ -115,7 +119,9 @@ function UpdateVideo() {
       setIsLoading(true);
       const confirm = window.confirm("Are you sure about deleting the video?");
       if (confirm) {
-        const res = await axios.delete(`/api/v1/videos/delete/${vid?._id}`);
+        const res = await axios.delete(
+          `https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/delete/${vid?._id}`
+        );
         if (res?.data?.success) {
           setIsLoading(false);
           navigate("/");

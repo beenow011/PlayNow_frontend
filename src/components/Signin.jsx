@@ -31,10 +31,13 @@ export default function SignIn() {
       setError("All fields are required");
     } else {
       try {
-        const res = await axios.post("/api/v1/users/login", {
-          email: data.get("email"),
-          password: data.get("password"),
-        });
+        const res = await axios.post(
+          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/login",
+          {
+            email: data.get("email"),
+            password: data.get("password"),
+          }
+        );
         if (res?.status === 200) {
           console.log("success", res);
           dispatch(login(res?.data?.data?.user));

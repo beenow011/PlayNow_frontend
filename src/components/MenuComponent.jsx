@@ -17,7 +17,9 @@ function MenuComponent({ status }) {
   const location = useLocation();
   const handleLogout = async () => {
     try {
-      const res = await axios.post("/api/v1/users/logout");
+      const res = await axios.post(
+        "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/logout"
+      );
       if (res.status === 200) {
         dispatch(logout());
       }
