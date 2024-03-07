@@ -25,6 +25,7 @@ export default function SignUp() {
   const dispatch = useDispatch();
   const [error, setError] = React.useState();
   const [isLoading, setIsLoading] = React.useState(false);
+
   const [avatar, setAvatar] = React.useState();
   const [coverImage, setCoverImage] = React.useState();
   const handleSubmit = async (event) => {
