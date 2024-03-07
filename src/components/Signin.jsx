@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { login } from "../store/authSlice";
 import toast, { Toaster } from "react-hot-toast";
+import { BeatLoader } from "react-spinners";
 
 export default function SignIn() {
   const [error, setError] = useState();
