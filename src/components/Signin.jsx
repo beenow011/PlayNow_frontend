@@ -39,6 +39,9 @@ export default function SignIn() {
           {
             email: data.get("email"),
             password: data.get("password"),
+          },
+          {
+            credentials: "include",
           }
         );
         if (res?.status === 200) {
