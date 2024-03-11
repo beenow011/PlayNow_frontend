@@ -21,7 +21,7 @@ function AllVideos() {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/getAllVideos"
+          "https://beenowapi.azure-api.net/api/v1/videos/getAllVideos"
         );
         setVideos(res?.data?.data);
       } catch (err) {

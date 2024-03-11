@@ -29,7 +29,7 @@ function UpdateProfile() {
       setIsLoading(true);
       if (emailAndFullname.email || emailAndFullname.fullName) {
         const res = await axios.patch(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/update-account-details",
+          "https://beenowapi.azure-api.net/api/v1/users/update-account-details",
           {
             email: emailAndFullname.email || userData.email,
             fullName: emailAndFullname.fullName || userData.fullName,
@@ -56,7 +56,7 @@ function UpdateProfile() {
       if (file.avatar) {
         setIsLoading(true);
         const res = await axios.patch(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/update-avatar",
+          "https://beenowapi.azure-api.net/api/v1/users/update-avatar",
           { avatar: file.avatar },
           {
             headers: {
@@ -81,7 +81,7 @@ function UpdateProfile() {
       if (file.coverImage) {
         setIsLoading(true);
         const res = await axios.patch(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/update-cover-image",
+          "https://beenowapi.azure-api.net/api/v1/users/update-cover-image",
           { coverImage: file.coverImage },
           {
             headers: {
@@ -105,7 +105,7 @@ function UpdateProfile() {
     try {
       if (password.newPassword && password.oldPassword) {
         const res = await axios.patch(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/change-password",
+          "https://beenowapi.azure-api.net/api/v1/users/change-password",
           {
             oldPassword: password.oldPassword,
             newPassword: password.newPassword,

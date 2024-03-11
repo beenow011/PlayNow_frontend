@@ -12,7 +12,7 @@ function SubscribedChannels() {
     const getSubscribedChannel = async () => {
       try {
         const res = await axios.get(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/subscription/getSubscribedChannel/${userData._id}`
+          `https://beenowapi.azure-api.net/api/v1/subscription/getSubscribedChannel/${userData._id}`
         );
         if (res.status === 200) {
           console.log(res?.data?.data);

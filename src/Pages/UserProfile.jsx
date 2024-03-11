@@ -14,7 +14,7 @@ function UserProfile() {
     const getUserInfo = async () => {
       try {
         const res = await axios.get(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/users/get-user-channel/${username}`
+          `https://beenowapi.azure-api.net/api/v1/users/get-user-channel/${username}`
         );
         if (res.status === 200) {
           console.log("sub", res);
@@ -31,7 +31,7 @@ function UserProfile() {
     const fetchVideo = async () => {
       try {
         const res = await axios.get(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/getAllVideos",
+          "https://beenowapi.azure-api.net/api/v1/videos/getAllVideos",
           {
             params: { userId: subInfo?._id },
           }
@@ -46,7 +46,7 @@ function UserProfile() {
   const handleSubscribe = async () => {
     try {
       const res = await axios.post(
-        `https://abhinavnbplaynow.azurewebsites.net/api/v1/subscription/toggleSubscribe/${subInfo?._id}`
+        `https://beenowapi.azure-api.net/api/v1/subscription/toggleSubscribe/${subInfo?._id}`
       );
       if (res.status === 200 || res.status === 201) {
         setRender((prev) => !prev);
