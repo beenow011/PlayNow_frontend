@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'https://abhinavnbplaynow.azurewebsites.net/'
+      '/api': 'https://beenowapi.azure-api.net/'
     }
   },
 });

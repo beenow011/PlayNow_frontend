@@ -21,7 +21,7 @@ function Profile({ admin = true }) {
     const getUserInfo = async () => {
       try {
         const res = await axios.get(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/users/get-user-channel/${userData?.username}`
+          `https://beenowapi.azure-api.net/api/v1/users/get-user-channel/${userData?.username}`
         );
         if (res.status === 200) {
           console.log(res);
@@ -34,7 +34,7 @@ function Profile({ admin = true }) {
     const fetchVideo = async () => {
       try {
         const res = await axios.get(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/getAllVideos",
+          "https://beenowapi.azure-api.net/api/v1/videos/getAllVideos",
           {
             params: { userId: userData?._id },
           }
@@ -47,7 +47,7 @@ function Profile({ admin = true }) {
     const fetchPrivateVid = async () => {
       try {
         const res = await axios.get(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/privateVideo"
+          "https://beenowapi.azure-api.net/api/v1/videos/privateVideo"
         );
         if (res?.data.success) {
           setPrivateVid(res?.data?.data);

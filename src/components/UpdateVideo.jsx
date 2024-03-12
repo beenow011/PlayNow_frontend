@@ -46,7 +46,7 @@ function UpdateVideo() {
     const getVideo = async () => {
       try {
         const res = await axios.get(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/fetchVideo/${videoID}`
+          `https://beenowapi.azure-api.net/api/v1/videos/fetchVideo/${videoID}`
         );
         if (res?.data.success) {
           setVid(res?.data?.data[0]);
@@ -77,7 +77,7 @@ function UpdateVideo() {
       try {
         setIsLoading2(true);
         const res = await axios.patch(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/updateVideo/${vid?._id}`,
+          `https://beenowapi.azure-api.net/api/v1/videos/updateVideo/${vid?._id}`,
           {
             title: title ? title : vid?.title,
             description: desc,
@@ -104,7 +104,7 @@ function UpdateVideo() {
   const handleTogglePublic = async () => {
     try {
       const res = await axios.patch(
-        `https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/togglePublish/${vid?._id}`
+        `https://beenowapi.azure-api.net/api/v1/videos/togglePublish/${vid?._id}`
       );
       if (res?.data?.success) {
         setTogglePublic((prev) => !prev);
@@ -120,7 +120,7 @@ function UpdateVideo() {
       const confirm = window.confirm("Are you sure about deleting the video?");
       if (confirm) {
         const res = await axios.delete(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/delete/${vid?._id}`
+          `https://beenowapi.azure-api.net/api/v1/videos/delete/${vid?._id}`
         );
         if (res?.data?.success) {
           setIsLoading(false);
