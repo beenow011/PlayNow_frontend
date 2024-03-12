@@ -15,7 +15,7 @@ function Comments({ id }) {
     const getComments = async () => {
       try {
         const res = await axios.get(
-          `https://beenowapi.azure-api.net/api/v1/comments/getAllComents/${id}`
+          `https://abhinavnbplaynow.azurewebsites.net/api/v1/comments/getAllComents/${id}`
         );
         if (res.status === 200) {
           setComments(res?.data?.data);
@@ -31,7 +31,7 @@ function Comments({ id }) {
     try {
       if (newComment.trim() !== "") {
         const res = await axios.post(
-          "https://beenowapi.azure-api.net/api/v1/comments/addComment",
+          "https://abhinavnbplaynow.azurewebsites.net/api/v1/comments/addComment",
           {
             videoID: id,
             comment: newComment,
