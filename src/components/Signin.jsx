@@ -35,7 +35,7 @@ export default function SignIn() {
     } else {
       try {
         const res = await axios.post(
-          "/api/v1/users/login",
+          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/login",
           {
             email: data.get("email"),
             password: data.get("password"),
