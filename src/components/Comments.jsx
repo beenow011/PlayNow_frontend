@@ -14,9 +14,7 @@ function Comments({ id }) {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const res = await axios.get(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/comments/getAllComents/${id}`
-        );
+        const res = await axios.get(`/api/v1/comments/getAllComents/${id}`);
         if (res.status === 200) {
           setComments(res?.data?.data);
         }
@@ -30,13 +28,10 @@ function Comments({ id }) {
   const handleComment = async () => {
     try {
       if (newComment.trim() !== "") {
-        const res = await axios.post(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/comments/addComment",
-          {
-            videoID: id,
-            comment: newComment,
-          }
-        );
+        const res = await axios.post("/api/v1/comments/addComment", {
+          videoID: id,
+          comment: newComment,
+        });
         console.log(res);
         if (res.status === 201) {
           console.log(res);

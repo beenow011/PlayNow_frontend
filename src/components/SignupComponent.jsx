@@ -52,7 +52,7 @@ export default function SignUp() {
       try {
         // console.log("hello");
         const res = await axios.post(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/register",
+          "/api/v1/users/register",
           {
             email: data.get("email"),
             password: data.get("password"),

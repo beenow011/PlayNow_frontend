@@ -34,7 +34,7 @@ function Publish() {
       } else {
         setIsLoading(true);
         const res = await axios.post(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/publish",
+          "/api/v1/videos/publish",
           {
             title,
             description,

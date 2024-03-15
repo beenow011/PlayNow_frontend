@@ -28,13 +28,10 @@ function UpdateProfile() {
     try {
       setIsLoading(true);
       if (emailAndFullname.email || emailAndFullname.fullName) {
-        const res = await axios.patch(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/update-account-details",
-          {
-            email: emailAndFullname.email || userData.email,
-            fullName: emailAndFullname.fullName || userData.fullName,
-          }
-        );
+        const res = await axios.patch("/api/v1/users/update-account-details", {
+          email: emailAndFullname.email || userData.email,
+          fullName: emailAndFullname.fullName || userData.fullName,
+        });
         if (res?.data?.success) {
           dispatch(login(res?.data?.data));
           setIsLoading(false);
@@ -56,7 +53,7 @@ function UpdateProfile() {
       if (file.avatar) {
         setIsLoading(true);
         const res = await axios.patch(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/update-avatar",
+          "/api/v1/users/update-avatar",
           { avatar: file.avatar },
           {
             headers: {
@@ -81,7 +78,7 @@ function UpdateProfile() {
       if (file.coverImage) {
         setIsLoading(true);
         const res = await axios.patch(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/update-cover-image",
+          "/api/v1/users/update-cover-image",
           { coverImage: file.coverImage },
           {
             headers: {
@@ -104,13 +101,10 @@ function UpdateProfile() {
   const handlePasswordChange = async () => {
     try {
       if (password.newPassword && password.oldPassword) {
-        const res = await axios.patch(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/change-password",
-          {
-            oldPassword: password.oldPassword,
-            newPassword: password.newPassword,
-          }
-        );
+        const res = await axios.patch("/api/v1/users/change-password", {
+          oldPassword: password.oldPassword,
+          newPassword: password.newPassword,
+        });
         if (res?.data?.success) {
           dispatch(login(res?.data?.data));
           setIsLoading(false);

@@ -20,9 +20,7 @@ function AllVideos() {
     const fetchVideo = async () => {
       setIsLoading(true);
       try {
-        const res = await axios.get(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/getAllVideos"
-        );
+        const res = await axios.get("/api/v1/videos/getAllVideos");
         setVideos(res?.data?.data);
       } catch (err) {
         console.log(err);

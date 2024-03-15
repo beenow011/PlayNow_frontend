@@ -14,7 +14,7 @@ function UserProfile() {
     const getUserInfo = async () => {
       try {
         const res = await axios.get(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/users/get-user-channel/${username}`
+          `/api/v1/users/get-user-channel/${username}`
         );
         if (res.status === 200) {
           console.log("sub", res);
@@ -30,12 +30,9 @@ function UserProfile() {
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const res = await axios.get(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/getAllVideos",
-          {
-            params: { userId: subInfo?._id },
-          }
-        );
+        const res = await axios.get("/api/v1/videos/getAllVideos", {
+          params: { userId: subInfo?._id },
+        });
         setVideos(res?.data?.data);
       } catch (err) {
         console.log(err);
@@ -46,7 +43,7 @@ function UserProfile() {
   const handleSubscribe = async () => {
     try {
       const res = await axios.post(
-        `https://abhinavnbplaynow.azurewebsites.net/api/v1/subscription/toggleSubscribe/${subInfo?._id}`
+        `/api/v1/subscription/toggleSubscribe/${subInfo?._id}`
       );
       if (res.status === 200 || res.status === 201) {
         setRender((prev) => !prev);

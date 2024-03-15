@@ -20,9 +20,7 @@ function VideoPage() {
   useEffect(() => {
     const getVideo = async () => {
       try {
-        const res = await axios.get(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/videos/fetchVideo/${videoID}`
-        );
+        const res = await axios.get(`/api/v1/videos/fetchVideo/${videoID}`);
         if (res.status === 202) {
           setVideo(res?.data?.data[0]);
         }
@@ -33,7 +31,7 @@ function VideoPage() {
     const addToWatchHisrory = async () => {
       try {
         const res = await axios.patch(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/users/addToWatchHistory/${videoID}`
+          `/api/v1/users/addToWatchHistory/${videoID}`
         );
         console.log("watch", res);
         if (res.data.success) {
@@ -50,9 +48,7 @@ function VideoPage() {
   useEffect(() => {
     const getLikeDetails = async () => {
       try {
-        const res = await axios.get(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/likes/likeStats/${videoID}`
-        );
+        const res = await axios.get(`/api/v1/likes/likeStats/${videoID}`);
         if (res.status === 200) {
           setLikeStats(res?.data?.data[0]);
         }
@@ -67,7 +63,7 @@ function VideoPage() {
     const getUserInfo = async () => {
       try {
         const res = await axios.get(
-          `https://abhinavnbplaynow.azurewebsites.net/api/v1/users/get-user-channel/${video?.owner[0].username}`
+          `/api/v1/users/get-user-channel/${video?.owner[0].username}`
         );
         if (res.status === 200) {
           console.log(res);
@@ -90,7 +86,7 @@ function VideoPage() {
   const handleSubscribe = async () => {
     try {
       const res = await axios.post(
-        `https://abhinavnbplaynow.azurewebsites.net/api/v1/subscription/toggleSubscribe/${subInfo?._id}`
+        `/api/v1/subscription/toggleSubscribe/${subInfo?._id}`
       );
       if (res.status === 200 || res.status === 201) {
         setRender((prev) => !prev);
@@ -102,9 +98,7 @@ function VideoPage() {
   };
   const handleLike = async () => {
     try {
-      const res = await axios.post(
-        `https://abhinavnbplaynow.azurewebsites.net/api/v1/likes/videoLiked/${videoID}`
-      );
+      const res = await axios.post(`/api/v1/likes/videoLiked/${videoID}`);
       if (res.data.success) {
         setLikeToggle((prev) => !prev);
       }
