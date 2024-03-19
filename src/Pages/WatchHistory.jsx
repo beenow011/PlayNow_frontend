@@ -8,7 +8,7 @@ function WatchHistory() {
     const getWatchHistory = async () => {
       try {
         const res = await axios.get(
-          "https://abhinavnbplaynow.azurewebsites.net/api/v1/users/get-watch-history"
+          "https://playitnow-backend.playitnow.co/api/v1/users/get-watch-history"
         );
         console.log(res);
         if (res?.data?.success) {
