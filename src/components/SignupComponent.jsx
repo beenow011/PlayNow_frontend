@@ -65,9 +65,7 @@ export default function SignUp() {
             headers: {
               "Content-Type": "multipart/form-data",
             },
-          },
-          {
-            withCredentials: true,
+            withCredentials: true, // This option should be included here
           }
         );
         console.log("hello", res);
