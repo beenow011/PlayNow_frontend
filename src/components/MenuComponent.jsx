@@ -19,6 +19,7 @@ function MenuComponent({ status }) {
     try {
       const res = await axios.post(
         "https://playitnow-backend.playitnow.co/api/v1/users/logout",
+        {},
         {
           withCredentials: true,
         }

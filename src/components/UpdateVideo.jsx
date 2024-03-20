@@ -90,9 +90,7 @@ function UpdateVideo() {
             headers: {
               "Content-Type": "multipart/form-data",
             },
-          },
-          {
-            withCredentials: true,
+            withCredentials: true, // This option should be included here
           }
         );
         if (res?.data?.success) {
@@ -111,6 +109,7 @@ function UpdateVideo() {
     try {
       const res = await axios.patch(
         `https://playitnow-backend.playitnow.co/api/v1/videos/togglePublish/${vid?._id}`,
+        {},
         {
           withCredentials: true,
         }
