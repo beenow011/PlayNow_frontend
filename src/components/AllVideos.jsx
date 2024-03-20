@@ -21,7 +21,10 @@ function AllVideos() {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          "https://playitnow-backend.playitnow.co/api/v1/videos/getAllVideos"
+          "https://playitnow-backend.playitnow.co/api/v1/videos/getAllVideos",
+          {
+            withCredentials: true,
+          }
         );
         setVideos(res?.data?.data);
       } catch (err) {
