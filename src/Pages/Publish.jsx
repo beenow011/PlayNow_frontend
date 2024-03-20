@@ -45,9 +45,7 @@ function Publish() {
             headers: {
               "Content-Type": "multipart/form-data",
             },
-          },
-          {
-            withCredentials: true,
+            withCredentials: true, // This option should be included here
           }
         );
         if (res.status === 202) {

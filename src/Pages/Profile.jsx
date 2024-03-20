@@ -40,11 +40,10 @@ function Profile({ admin = true }) {
           "https://playitnow-backend.playitnow.co/api/v1/videos/getAllVideos",
           {
             params: { userId: userData?._id },
-          },
-          {
-            withCredentials: true,
+            withCredentials: true, // This option should be included here
           }
         );
+
         setVideos(res?.data?.data);
       } catch (err) {
         console.log(err);

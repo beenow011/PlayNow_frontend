@@ -36,10 +36,8 @@ function UserProfile() {
         const res = await axios.get(
           "https://playitnow-backend.playitnow.co/api/v1/videos/getAllVideos",
           {
-            params: { userId: subInfo?._id },
-          },
-          {
-            withCredentials: true,
+            params: { userId: userData?._id },
+            withCredentials: true, // This option should be included here
           }
         );
         setVideos(res?.data?.data);
@@ -53,6 +51,7 @@ function UserProfile() {
     try {
       const res = await axios.post(
         `https://playitnow-backend.playitnow.co/api/v1/subscription/toggleSubscribe/${subInfo?._id}`,
+        {},
         {
           withCredentials: true,
         }

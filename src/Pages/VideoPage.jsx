@@ -103,6 +103,7 @@ function VideoPage() {
     try {
       const res = await axios.post(
         `https://playitnow-backend.playitnow.co/api/v1/subscription/toggleSubscribe/${subInfo?._id}`,
+        {},
         {
           withCredentials: true,
         }
@@ -119,6 +120,7 @@ function VideoPage() {
     try {
       const res = await axios.post(
         `https://playitnow-backend.playitnow.co/api/v1/likes/videoLiked/${videoID}`,
+        {},
         {
           withCredentials: true,
         }
