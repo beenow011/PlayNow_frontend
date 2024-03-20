@@ -273,13 +273,13 @@ function UpdateProfile() {
         <div className="mt-10">
           <h1 className="font-bold text-center p-3">Cover Image</h1>
           <div className="m-3">
-            <div className="p-2 flex">
+            <div className="p-2 flex flex-col md:flex-row">
               <label htmlFor="" className="pr-2">
                 Cover Image
               </label>
               <TextField
                 id="coverImage"
-                className="bg-gray-200"
+                className="bg-gray-200 w-56"
                 type="file"
                 onChange={(e) =>
                   setFile({ ...file, coverImage: e.target.files[0] })

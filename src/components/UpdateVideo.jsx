@@ -147,7 +147,7 @@ function UpdateVideo() {
   return (
     <div className="text-white p-2 ">
       <h1 className="font-semibold text-center">Update Video</h1>
-      <div className="flex mt-3 gap-5">
+      <div className="flex flex-col md:flex-row mt-3 gap-5">
         <div className="w-36 h-16 object-contain overflow-hidden">
           <img src={vid?.thumbnail} alt="thumbnail" />
         </div>
@@ -185,6 +185,7 @@ function UpdateVideo() {
               handleChange={handleChangeThumbnail}
               name="file"
               types={thumbnailFileTypes}
+              style={{ width: "100px" }}
             />
           </>
         )}

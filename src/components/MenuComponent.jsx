@@ -96,7 +96,7 @@ function MenuComponent({ status }) {
   ];
   console.log(status);
   return (
-    <div className="antialiased">
+    <div className="antialiased bg-white/20 md:bg-transparent">
       {status ? (
         <ul className="flex flex-col justify-start gap-4 mt-10">
           {menuItems.map((item, i) => (
@@ -144,7 +144,7 @@ function MenuComponent({ status }) {
       ) : (
         <ul className="flex flex-col justify-start gap-4 mt-10">
           <li
-            className="flex gap-3 align-middle hover:bg-slate-500/40 p-2"
+            className="flex  gap-3 align-middle hover:bg-slate-500/40 p-2"
             onClick={() => {
               navigate("/login");
             }}
