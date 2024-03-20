@@ -41,7 +41,7 @@ export default function SignIn() {
             password: data.get("password"),
           },
           {
-            credentials: "include",
+            withCredentials: true,
           }
         );
         if (res?.status === 200) {
