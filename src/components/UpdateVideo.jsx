@@ -46,7 +46,10 @@ function UpdateVideo() {
     const getVideo = async () => {
       try {
         const res = await axios.get(
-          `https://playitnow-backend.playitnow.co/api/v1/videos/fetchVideo/${videoID}`
+          `https://playitnow-backend.playitnow.co/api/v1/videos/fetchVideo/${videoID}`,
+          {
+            withCredentials: true,
+          }
         );
         if (res?.data.success) {
           setVid(res?.data?.data[0]);
@@ -87,6 +90,9 @@ function UpdateVideo() {
             headers: {
               "Content-Type": "multipart/form-data",
             },
+          },
+          {
+            withCredentials: true,
           }
         );
         if (res?.data?.success) {
@@ -104,7 +110,10 @@ function UpdateVideo() {
   const handleTogglePublic = async () => {
     try {
       const res = await axios.patch(
-        `https://playitnow-backend.playitnow.co/api/v1/videos/togglePublish/${vid?._id}`
+        `https://playitnow-backend.playitnow.co/api/v1/videos/togglePublish/${vid?._id}`,
+        {
+          withCredentials: true,
+        }
       );
       if (res?.data?.success) {
         setTogglePublic((prev) => !prev);
@@ -120,7 +129,10 @@ function UpdateVideo() {
       const confirm = window.confirm("Are you sure about deleting the video?");
       if (confirm) {
         const res = await axios.delete(
-          `https://playitnow-backend.playitnow.co/api/v1/videos/delete/${vid?._id}`
+          `https://playitnow-backend.playitnow.co/api/v1/videos/delete/${vid?._id}`,
+          {
+            withCredentials: true,
+          }
         );
         if (res?.data?.success) {
           setIsLoading(false);

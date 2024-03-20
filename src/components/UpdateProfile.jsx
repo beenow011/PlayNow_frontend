@@ -33,6 +33,9 @@ function UpdateProfile() {
           {
             email: emailAndFullname.email || userData.email,
             fullName: emailAndFullname.fullName || userData.fullName,
+          },
+          {
+            withCredentials: true,
           }
         );
         if (res?.data?.success) {
@@ -62,6 +65,9 @@ function UpdateProfile() {
             headers: {
               "Content-Type": "multipart/form-data",
             },
+          },
+          {
+            withCredentials: true,
           }
         );
         if (res?.data?.success) {
@@ -87,6 +93,9 @@ function UpdateProfile() {
             headers: {
               "Content-Type": "multipart/form-data",
             },
+          },
+          {
+            withCredentials: true,
           }
         );
         if (res?.data?.success) {
@@ -109,6 +118,9 @@ function UpdateProfile() {
           {
             oldPassword: password.oldPassword,
             newPassword: password.newPassword,
+          },
+          {
+            withCredentials: true,
           }
         );
         if (res?.data?.success) {

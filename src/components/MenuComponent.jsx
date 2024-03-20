@@ -18,7 +18,10 @@ function MenuComponent({ status }) {
   const handleLogout = async () => {
     try {
       const res = await axios.post(
-        "https://playitnow-backend.playitnow.co/api/v1/users/logout"
+        "https://playitnow-backend.playitnow.co/api/v1/users/logout",
+        {
+          withCredentials: true,
+        }
       );
       if (res.status === 200) {
         dispatch(logout());

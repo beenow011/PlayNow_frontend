@@ -21,7 +21,10 @@ function Profile({ admin = true }) {
     const getUserInfo = async () => {
       try {
         const res = await axios.get(
-          `https://playitnow-backend.playitnow.co/api/v1/users/get-user-channel/${userData?.username}`
+          `https://playitnow-backend.playitnow.co/api/v1/users/get-user-channel/${userData?.username}`,
+          {
+            withCredentials: true,
+          }
         );
         if (res.status === 200) {
           console.log(res);
@@ -37,6 +40,9 @@ function Profile({ admin = true }) {
           "https://playitnow-backend.playitnow.co/api/v1/videos/getAllVideos",
           {
             params: { userId: userData?._id },
+          },
+          {
+            withCredentials: true,
           }
         );
         setVideos(res?.data?.data);
@@ -47,7 +53,10 @@ function Profile({ admin = true }) {
     const fetchPrivateVid = async () => {
       try {
         const res = await axios.get(
-          "https://playitnow-backend.playitnow.co/api/v1/videos/privateVideo"
+          "https://playitnow-backend.playitnow.co/api/v1/videos/privateVideo",
+          {
+            withCredentials: true,
+          }
         );
         if (res?.data.success) {
           setPrivateVid(res?.data?.data);

@@ -15,7 +15,10 @@ function Comments({ id }) {
     const getComments = async () => {
       try {
         const res = await axios.get(
-          `https://playitnow-backend.playitnow.co/api/v1/comments/getAllComents/${id}`
+          `https://playitnow-backend.playitnow.co/api/v1/comments/getAllComents/${id}`,
+          {
+            withCredentials: true,
+          }
         );
         if (res.status === 200) {
           setComments(res?.data?.data);
@@ -35,6 +38,9 @@ function Comments({ id }) {
           {
             videoID: id,
             comment: newComment,
+          },
+          {
+            withCredentials: true,
           }
         );
         console.log(res);
