@@ -40,6 +40,7 @@ function UserProfile() {
             withCredentials: true, // This option should be included here
           }
         );
+
         setVideos(res?.data?.data);
       } catch (err) {
         console.log(err);
