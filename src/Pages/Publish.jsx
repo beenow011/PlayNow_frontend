@@ -69,7 +69,7 @@ function Publish() {
     }
   }, [error]);
   return (
-    <div className="-ml-8 md:ml-auto">
+    <div className="-ml-8 md:ml-0">
       <div>
         <Toaster />
       </div>

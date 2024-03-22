@@ -4,6 +4,7 @@ import coverImage2 from "../assets/proxy (39).jpeg";
 import { Avatar } from "@mui/material";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function UserProfile() {
   const [subInfo, setSubInfo] = useState();
@@ -36,7 +37,7 @@ function UserProfile() {
         const res = await axios.get(
           "https://playitnow-backend.playitnow.co/api/v1/videos/getAllVideos",
           {
-            params: { userId: userData?._id },
+            params: { userId: subInfo?._id },
             withCredentials: true, // This option should be included here
           }
         );
@@ -48,6 +49,7 @@ function UserProfile() {
     };
     if (subInfo) fetchVideo();
   }, [subInfo]);
+  console.log(subInfo);
   const handleSubscribe = async () => {
     try {
       const res = await axios.post(
