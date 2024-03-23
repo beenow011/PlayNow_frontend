@@ -8,6 +8,7 @@ import { CgOptions } from "react-icons/cg";
 import { MdPublic } from "react-icons/md";
 import { AiFillLock } from "react-icons/ai";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { BiGhost } from "react-icons/bi";
 function Profile({ admin = true }) {
   const [subInfo, setSubInfo] = useState();
   const [videos, setVideos] = useState([]);
@@ -145,11 +146,7 @@ function Profile({ admin = true }) {
 
         <div className={`${location.pathname !== "/profile" && "blur"}`}>
           <h1 className="text-white font-bold text-3xl p-2">Your Videos</h1>
-          <p className="text-violet-700 font-semibold my-5">
-            {togglePublic
-              ? videos.length === 0 && "No videos"
-              : privateVid.length === 0 && "No Private videos"}
-          </p>
+
           <div className="flex gap-5 text-white mb-5">
             <div
               className={`border-white border rounded-md p-2 w-16 flex ${
@@ -161,7 +158,16 @@ function Profile({ admin = true }) {
             </div>
             <p className="p-2">{togglePublic ? "Public" : "Private"}</p>
           </div>
-
+          {(togglePublic ? videos : privateVid).length === 0 && (
+            <div className="w-[80vw] h-64 bg-gray-950 shadow-md shadow-gray-800 rounded-md flex flex-col justify-center items-center m-4">
+              <BiGhost className="text-white hover:animate-pulse" size={50} />
+              <h1 className="font-semibold text-white antialiased">
+                {togglePublic
+                  ? videos.length === 0 && "No videos"
+                  : privateVid.length === 0 && "No Private videos"}
+              </h1>
+            </div>
+          )}
           <div>
             <ul className="flex gap-10 flex-wrap">
               {(togglePublic ? videos : privateVid)?.map((vid) => (

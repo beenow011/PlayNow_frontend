@@ -98,7 +98,7 @@ function MenuComponent({ status }) {
   return (
     <div className="antialiased bg-white/20 md:bg-transparent">
       {status ? (
-        <ul className="flex flex-col justify-start gap-4 mt-10">
+        <ul className="flex flex-col justify-start gap-4 mt-6">
           {menuItems.map((item, i) => (
             <li
               key={i}

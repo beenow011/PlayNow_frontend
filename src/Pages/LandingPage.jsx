@@ -43,7 +43,7 @@ function LandingPage() {
   }
   // console.log("search term", serachTerm);
   return (
-    <div className="bg-black/65  bg-blend-screen ">
+    <div className="bg-gradient-to-b from-black to-slate-900  bg-blend-screen ">
       <div className="relative">
         <Header status={userStatus} />
       </div>
@@ -59,13 +59,15 @@ function LandingPage() {
             location.pathname === "/history"
               ? "block"
               : "hidden md:block"
-          } top-32  h-full  p-4`}
+          } top-32 ${
+            userStatus ? "h-[86vh]" : "h-full"
+          }   p-4 border-r-2 mr-6 border-zinc-700 `}
         >
-          <div className="flex  align-middle mt-16 md:mt-10">
+          <div className="flex  align-middle mt-16 md:mt-8 border-b-2 border-zinc-500 pb-2 ">
             <ListIcon style={{ fill: "violet", fontSize: 40 }} />
             <label
               htmlFor=""
-              className="text-white  text-3xl ml-5 font-bold hidden md:block"
+              className="text-white  text-3xl ml-5 font-bold hidden md:block "
             >
               Menu
             </label>

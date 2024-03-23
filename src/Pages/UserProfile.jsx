@@ -5,7 +5,7 @@ import { Avatar } from "@mui/material";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import { BiGhost } from "react-icons/bi";
 function UserProfile() {
   const [subInfo, setSubInfo] = useState();
   const [videos, setVideos] = useState();
@@ -69,14 +69,14 @@ function UserProfile() {
   };
   console.log(videos);
   return (
-    <div className={` flex flex-col items-start pb-10  -ml-12`}>
+    <div className={` flex flex-col items-start pb-10  -ml-12 w-fit`}>
       <div>
         <img
           src={subInfo?.coverImage || coverImage2}
           alt="coverImage"
-          className="h-24 lg:ml-0 lg:h-64 w-[100vw]  object-cover"
+          className="h-24 lg:ml-0 lg:h-64 w-[100vw] md:w-[80vw] object-cover"
         />
-        <div className="flex flex-col lg:flex-row justify-around bg-violet-500/30 w-[100vw] p-3">
+        <div className="flex flex-col lg:flex-row justify-around bg-violet-500/30 w-[100vw] md:w-[80vw] p-3">
           <div className="p-4 flex gap-6 lg:gap-16">
             <div className="w-32 h-32 lg:w-64 lg:h-64">
               <Avatar
@@ -128,6 +128,14 @@ function UserProfile() {
         <div className="flex flex-col justify-center items-center lg:block">
           <h1 className="text-white font-bold text-3xl p-2">Videos</h1>
           <div>
+            {videos?.length === 0 && (
+              <div className="w-[80vw] h-64 bg-gray-950 shadow-md shadow-gray-800 rounded-md flex flex-col justify-center items-center m-4">
+                <BiGhost className="text-white hover:animate-pulse" size={50} />
+                <h1 className="font-semibold text-white antialiased">
+                  No videos
+                </h1>
+              </div>
+            )}
             <ul className="flex gap-10 flex-wrap">
               {videos &&
                 videos.map((vid) => (

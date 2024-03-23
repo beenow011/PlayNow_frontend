@@ -304,7 +304,7 @@ function UpdateProfile() {
       >
         {page > 1 && (
           <div
-            className="p-3 cursor-pointer border mx-2 border-violet-700"
+            className="p-2 rounded-md cursor-pointer border mx-2 border-violet-700"
             onClick={() => setPage((prev) => prev - 1)}
           >
             Prev
@@ -312,7 +312,7 @@ function UpdateProfile() {
         )}
         {page < 4 && (
           <div
-            className="p-3 cursor-pointer border mx-2 border-violet-700"
+            className="p-2 rounded-md cursor-pointer border mx-2 border-violet-700"
             onClick={() => setPage((prev) => prev + 1)}
           >
             Next

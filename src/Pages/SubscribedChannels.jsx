@@ -1,6 +1,7 @@
 import { Avatar } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { BiGhost } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -34,6 +35,14 @@ function SubscribedChannels() {
           Channels you Subscribed
         </h1>
       </div>
+      {channel?.length === 0 && (
+        <div className="w-[80vw] h-64 bg-gray-950 shadow-md shadow-gray-800 rounded-md flex flex-col justify-center items-center m-4">
+          <BiGhost className="text-white hover:animate-pulse" size={50} />
+          <h1 className="font-semibold text-white antialiased">
+            No channels subscribed.
+          </h1>
+        </div>
+      )}
       <div className="flex flex-wrap justify-center items-center  gap-10">
         {channel &&
           channel

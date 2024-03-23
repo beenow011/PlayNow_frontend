@@ -8,7 +8,7 @@ function Header({ status }) {
   // const [searchQuery, setSearchQuery] = useState("");
   console.log(status);
   return (
-    <div className="h-48 md:h-32 fixed w-full bg-black flex flex-col md:flex-row justify-around shadow-violet-700 shadow-xl items-center text-white z-[9999]">
+    <div className="h-48 md:h-32 fixed w-full bg-gradient-to-b from-black to-slate-900 flex flex-col md:flex-row justify-around shadow-violet-700 shadow-xl items-center text-white z-[9999]">
       <div
         className="p-3"
         onClick={() => {
