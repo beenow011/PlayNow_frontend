@@ -96,7 +96,7 @@ function MenuComponent({ status }) {
   ];
   console.log(status);
   return (
-    <div className="antialiased bg-white/20 md:bg-transparent">
+    <div className="antialiased bg-black md:bg-transparent">
       {status ? (
         <ul className="flex flex-col justify-start gap-4 mt-6">
           {menuItems.map((item, i) => (
@@ -142,33 +142,33 @@ function MenuComponent({ status }) {
           </li>
         </ul>
       ) : (
-        <ul className="flex flex-col justify-start gap-4 mt-10">
+        <ul className="flex md:flex-col justify-start gap-4 mt-10">
           <li
-            className="flex  gap-3 align-middle hover:bg-slate-500/40 p-2"
+            className="flex  gap-3 align-middle rounded-full bg-zinc-700 md:bg-transparent md:rounded-none hover:bg-slate-500/40 p-3 md:pd-2"
             onClick={() => {
               navigate("/login");
             }}
           >
-            <div className="py-1">
-              <LoginIcon style={{ fill: "white", fontSize: 20 }} />{" "}
+            <div className="md:py-1">
+              <LoginIcon style={{ fill: "white", fontSize: 18 }} />{" "}
             </div>
             <p
-              className={`text-xl py-1 cursor-pointer text-white font-semibold `}
+              className={`text-lg md:text-xl md:py-1 cursor-pointer text-white font-semibold `}
             >
               Login
             </p>
           </li>
           <li
-            className="flex gap-3 align-middle hover:bg-slate-500/40 p-2"
+            className="flex gap-3 align-middle rounded-full bg-zinc-700 md:bg-transparent md:rounded-none hover:bg-slate-500/40 p-3 md:pd-2"
             onClick={() => {
               navigate("/signup");
             }}
           >
-            <div className="py-1">
-              <PersonAddAltIcon style={{ fill: "white", fontSize: 20 }} />{" "}
+            <div className="md:py-1">
+              <PersonAddAltIcon style={{ fill: "white", fontSize: 18 }} />{" "}
             </div>
             <p
-              className={`text-xl py-1 cursor-pointer text-white font-semibold `}
+              className={`text-lg md:text-xl md:py-1 cursor-pointer text-white font-semibold `}
             >
               SignUp
             </p>
