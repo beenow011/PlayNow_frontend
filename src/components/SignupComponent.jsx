@@ -25,21 +25,26 @@ export default function SignUp() {
   const dispatch = useDispatch();
   const [error, setError] = React.useState();
   const [isLoading, setIsLoading] = React.useState(false);
+  const [email, setEmail] = React.useState();
+  const [isEmailValid, setIsEmailValid] = React.useState(false);
+  React.useEffect(() => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    setIsEmailValid(regex.test(email));
+  }, [email]);
   const [avatar, setAvatar] = React.useState();
   const [coverImage, setCoverImage] = React.useState();
-  console.log(coverImage);
+  // console.log(coverImage);
   const handleSubmit = async (event) => {
-    setIsLoading(true);
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-      fullName: data.get("fullName"),
-      avatar: data.get("avatar"),
-      coverIamge: data.get("coverImage"),
-    });
+    // console.log({
+    //   email: data.get("email"),
+    //   password: data.get("password"),
+    //   fullName: data.get("fullName"),
+    //   avatar: data.get("avatar"),
+    //   coverIamge: data.get("coverImage"),
+    // });
     if (
       [
         data.get("fullName"),
@@ -52,35 +57,42 @@ export default function SignUp() {
     } else {
       try {
         // console.log("hello");
-        const res = await axios.post(
-          "https://playitnow-backend.playitnow.co/api/v1/users/register",
-          {
-            email: data.get("email"),
-            password: data.get("password"),
-            fullName: data.get("fullName"),
-            username: data.get("username"),
-            avatar,
-            coverImage,
-          },
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
+        if (isEmailValid) {
+          setIsLoading(true);
+          const res = await axios.post(
+            "https://playitnow-backend.playitnow.co/api/v1/users/register",
+            {
+              email: data.get("email"),
+              password: data.get("password"),
+              fullName: data.get("fullName"),
+              username: data.get("username"),
+              avatar,
+              coverImage,
             },
-            withCredentials: true, // This option should be included here
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+              withCredentials: true, // This option should be included here
+            }
+          );
+          console.log("hello", res);
+          if (res?.status === 200) {
+            console.log("success", res);
+            dispatch(login(res?.data?.data?.createdUser));
+            console.log("user", res?.data?.data?.createdUser);
+            navigate("/");
           }
-        );
-        console.log("hello", res);
-        if (res?.status === 200) {
-          console.log("success", res);
-          dispatch(login(res?.data?.data?.createdUser));
-          console.log("user", res?.data?.data?.createdUser);
-          navigate("/");
+        } else {
+          setError("Invalid Email");
         }
       } catch (err) {
         const startIndex =
           err.response?.data.indexOf("Error: ") + "Error: ".length;
         const endIndex = err.response?.data.indexOf("<br>");
-        const errorMessage = err.response?.data.substring(startIndex, endIndex);
+        const errorMessage =
+          err.response?.data.substring(startIndex, endIndex) ||
+          "Email ID is already used";
         setIsLoading(false);
         // console.log(errorMessage);
         setError(errorMessage);
@@ -88,7 +100,7 @@ export default function SignUp() {
       }
     }
   };
-  console.log("avatara", avatar);
+  // console.log("email", email);
   React.useEffect(() => {
     if (error) {
       toast.error(error);
@@ -153,7 +165,9 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  type="email"
                   className="bg-gray-200"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -177,7 +191,7 @@ export default function SignUp() {
                   type="file"
                   placeholder="avatar"
                   name="avatar"
-                  className="h-10 bg-gray-200 ml-9 text-black p-2 w-[60vw] md:w-auto"
+                  className="h-10 bg-gray-200 ml-9 text-black p-2 w-[60vw] md:w-2/3 truncate"
                   onChange={(e) => setAvatar(e.target.files[0])}
                 />
               </Grid>
@@ -189,7 +203,7 @@ export default function SignUp() {
                   type="file"
                   placeholder="Cover image"
                   name="coverImage"
-                  className="h-10 bg-gray-200 text-black p-2 truncate w-[60vw] md:w-auto"
+                  className="h-10 bg-gray-200 text-black p-2 truncate w-[60vw] md:w-2/3 "
                   onChange={(e) => setCoverImage(e.target.files[0])}
                 />
               </Grid>
