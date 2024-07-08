@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ActionAreaCard from "../components/HomeCard";
+import { BiGhost } from "react-icons/bi";
 
 function WatchHistory() {
   const [videos, setVideos] = useState();
